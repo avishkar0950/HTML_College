@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #4040bb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      text-align: center;
+    }
+    h1 {
+      color: #333;
+    }
+    input[type="number"], input[type="text"] {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 10px;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    h2 {
+      color: #555;
+    }
+    #result {
+      font-weight: bold;
+      color: #007BFF;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Calculator</h1>
+
+    <label for="num1">Enter first number:</label><br>
+    <input type="number" id="num1" /><br>
+
+    <label for="num2">Enter second number:</label><br>
+    <input type="number" id="num2" /><br>
+
+    <label for="operation">Choose operation (+, -, *, /):</label><br>
+    <input type="text" id="operation" /><br>
+
+    <button onclick="compute()">Calculate</button>
+
+    <h2>Result: <span id="result"></span></h2>
+  </div>
+
+  <script>
+    function compute() {
+      // Get values from the input fields
+      const num1 = parseFloat(document.getElementById('num1').value);
+      const num2 = parseFloat(document.getElementById('num2').value);
+      const operation = document.getElementById('operation').value;
+
+      let result;
+
+      // Perform the operation based on user input
+      switch (operation) {
+        case '+':
+          result = num1 + num2;
+          break;
+        case '-':
+          result = num1 - num2;
+          break;
+        case '*':
+          result = num1 * num2;
+          break;
+        case '/':
+          if (num2 !== 0) {
+            result = num1 / num2;
+          } else {
+            result = "Error: Division by zero";
+          }
+          break;
+        default:
+          result = "Invalid operation";
+      }
+
+      // Display the result
+      document.getElementById('result').textContent = result;
+    }
+  </script>
+</body>
+</html>
